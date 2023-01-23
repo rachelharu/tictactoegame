@@ -1,167 +1,43 @@
 #create board for game
-board = [ ["-", "-", "-"], 
-          ["-", "-", "-"],
-          ["-", "-", "-"] ]
+board = [["-", "-", "-"], ["-", "-", "-"], ["-", "-", "-"]]
 
 print(board[0])
 print(board[1])
 print(board[2])
 
-#prompt X player for input
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-#subtract 1 to compensate for 0 = 1 in coding 
-col -= 1 
-row -= 1
+col = 0
+row = 0
+playerTurn = "X"
 
-board[row][col] = "X"
-print(board[0])
-print(board[1])
-print(board[2])
+#code for x and o players
+for counter in range(1, 10):
 
-#prompt Y user for input
-col = int(input("O player, select a column 1-3: "))
-row = int(input("O player, select a row 1-3: "))
+  validMove = False  #setting the validMove variable to false
+  while (validMove == False):  #while loop checking validMove
+    col = 0
+    row = 0
+    while (col < 1 or col > 3):
+      col = int(input(playerTurn + " player, select a column 1-3"))
+      if (col < 1 or col > 3):
+        print("The column must between 1 and 3.")
+    while (row < 1 or row > 3):
+      row = int(input(playerTurn + " player, select a row 1-3: "))
+      if (row < 1 or row > 3):
+        print("The row must be between 1 and 3.")
+  col -= 1
+  row -= 1
 
-board[row][col] = "O"
-print(board[0])
-print(board[1])
-print(board[2])
+  if board[row][col] == '-':
+    board[row][col] = playerTurn
+    validMove = True
+    #setting validMove to True to exit loop
+  else:
+    print("Oops, that spot was already taken. Please select another spot.")
+  print(board[0])
+  print(board[1])
+  print(board[2])
 
-#code to check if space has been filled
-if board[row][col] == '-':
-  board[row][col] = "O"
-else: 
-  print("Oops, that spot was already taken.")
-
-#the following code creates the board
-board = [ ["-", "-", "-"],
-          ["-", "-", "-"],
-          ["-", "-", "-"] ]
- 
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player X’s first move
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-board[row][col] = "X"
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player O’s first move
-col = int(input("O player, select a column 1-3: "))
-row = int(input("O player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "O"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player X’s second move
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "X"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player O’s second move
-col = int(input("O player, select a column 1-3: "))
-row = int(input("O player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "O"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player X’s third move
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "X"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player O’s third move
-col = int(input("O player, select a column 1-3: "))
-row = int(input("O player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "O"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player X’s fourth move
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "X"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player O’s fourth move
-col = int(input("O player, select a column 1-3: "))
-row = int(input("O player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "O"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
- 
-#this is player X’s fifth move
-col = int(input("X player, select a column 1-3: "))
-row = int(input("X player, select a row 1-3: "))
-col -= 1
-row -= 1
- 
-if board[row][col] == '-':
-  board[row][col] = "X"
-else:
-  print("Oops, that spot was already taken. ")
-print(board[0])
-print(board[1])
-print(board[2])
+  if playerTurn == "X":
+    playerTurn = "O"
+  else:
+    playerTurn = "X"
